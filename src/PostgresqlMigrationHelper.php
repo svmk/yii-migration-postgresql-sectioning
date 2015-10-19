@@ -128,7 +128,8 @@ class PostgresqlMigrationHelper {
 		foreach ($this->grouping->generateSequences() as $item) {
 			$down(
 				$this->migration,
-				$this->grouping->getTableName($item)
+				$this->grouping->getTableName($item),
+                false
 			);
 		}
 		$down($this->migration,$this->tableName,true);

@@ -22,6 +22,6 @@ class DateTimeWeekOfYearGrouping extends AbstractGrouping {
      * @return string
      */
 	protected function getExpression($sequenceItem) {
-		return ' EXTRACT(WOY FROM TIMESTAMP '.$this->column.') = '.$sequenceItem.' ';
+		return ' EXTRACT(WOY FROM '.$this->column.') = '.$sequenceItem.' ';
 	}
 }

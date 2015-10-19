@@ -22,6 +22,6 @@ class DateTimeDayOfYearGrouping extends AbstractGrouping {
      * @return string
      */
 	protected function getExpression($sequenceItem) {
-		return ' EXTRACT(DOY FROM TIMESTAMP '.$this->column.') = '.$sequenceItem.' ';
+		return ' EXTRACT(DOY FROM '.$this->column.') = '.$sequenceItem.' ';
 	}
 }

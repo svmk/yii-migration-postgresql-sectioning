@@ -80,23 +80,24 @@ abstract class AbstractGrouping implements IGrouping {
      */
 	public function up() {
 		$tableName = $this->helper->getTableName();
-		$triggerName = $tableName.'_woy_sect_insert_trigger';
+		$functionName = $tableName.'_woy_sect_insert_trigger';
 		$column      = $this->column;
 		$conditions = array();
 		foreach ($this->generateSequences() as $sequenceItem) {
-			$sqlItem = $this->getExpression($sequenceItem);
-			$tableNameItem = '('.$this->getTableName($sequenceItem).')';
+			$sqlItem = '('.$this->getExpression($sequenceItem).')';
+			$tableNameItem = $this->getTableName($sequenceItem);
 			$sqlItem .= " THEN INSERT INTO $tableNameItem VALUES (NEW.*); ";
 			$conditions[] = $sqlItem;
 		}
 		$conditions = implode("\n ELSIF ",$conditions);
+        $triggerName = $functionName.'_trigger';
 		$sql = <<<SQL
-CREATE OR REPLACE FUNCTION $tableName.$triggerName()
+CREATE OR REPLACE FUNCTION $functionName()
 RETURNS TRIGGER AS $$
 BEGIN
   IF $conditions
   ELSE 
-    RAISE EXCEPTION 'Date % is out of range. Fix $tableName.$triggerName', NEW.$column;
+    RAISE EXCEPTION 'Date % is out of range. Fix $tableName.$functionName', NEW.$column;
   END IF;
   RETURN NULL;
 END;
@@ -104,9 +105,9 @@ $$
 LANGUAGE plpgsql;
 SQL;
 		$this->helper->getMigration()->execute($sql);
-		$this->helper->getMigration()->execute("CREATE TRIGGER $tableName_$triggerName
-  BEFORE INSERT ON $tableName.$column
-  FOR EACH ROW EXECUTE PROCEDURE $tableName.$triggerName();");
+		$this->helper->getMigration()->execute("CREATE TRIGGER $functionName
+  BEFORE INSERT ON $tableName
+  FOR EACH ROW EXECUTE PROCEDURE $functionName();");
 	}
 
     /**
