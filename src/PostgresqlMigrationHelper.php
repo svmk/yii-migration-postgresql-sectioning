@@ -109,7 +109,7 @@ class PostgresqlMigrationHelper {
 				$this->grouping->getTableName($item),
 				$this->grouping->getTableParams($item),
 				$this->grouping->getTableConfig($item),
-				true
+				false
 			);			
 		}
 		$this->grouping->up();

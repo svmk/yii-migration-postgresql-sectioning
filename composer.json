@@ -9,7 +9,7 @@
         }
     ],
     "minimum-stability": "stable",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "require": {
         "php": ">=5.3"
     },
