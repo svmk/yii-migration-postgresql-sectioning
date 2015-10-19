@@ -1,5 +1,5 @@
 {
-    "name": "yii-migration-postgresql-sectioning",
+    "name": "svmk/yii-migration-postgresql-sectioning",
     "description": "Migration for creating partitioing using Yii1/Yii2 framework.",
     "license": "MIT",
     "authors": [
