@@ -101,7 +101,7 @@ class PostgresqlMigrationHelper {
      * @access public
      * @throws Exception when migration is't confured
      */
-	public function up(Closure $up) {
+	public function up(\Closure $up) {
 		$this->checkConfig();
 		$up($this->migration,$this->tableName,$this->params,$this->config,true);
 		foreach ($this->grouping->generateSequences() as $item) {
@@ -124,7 +124,7 @@ class PostgresqlMigrationHelper {
      * @access public
      * @throws Exception when migration is't confured
      */
-	public function down(Closure $down) {
+	public function down(\Closure $down) {
 		$this->checkConfig();
 		foreach ($this->grouping->generateSequences() as $item) {
 			$down(
