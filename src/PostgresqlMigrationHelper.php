@@ -1,6 +1,7 @@
 <?php
 namespace svmk\yiiMigrationSectioningPostgres;
 use Exception;
+use Closure;
 class PostgresqlMigrationHelper {
 	protected $migration;
 	protected $tableName;
