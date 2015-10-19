@@ -24,7 +24,7 @@ class IndexReminderOfDivisonGrouping extends AbstractGrouping {
      * @return string
      */
 	protected function getExpression($sequenceItem) {
-		return ' EXTRACT('.$this->column.' % '.$this->divider.') = '.$sequenceItem.' ';
+		return ' ('.$this->column.' % '.$this->divider.') = '.$sequenceItem.' ';
 	}
 
      function __construct($primaryKey,$column,$divider) {
