@@ -54,7 +54,7 @@ abstract class AbstractGrouping implements IGrouping {
 		}
 		return array(
 			$this->primaryKey => $param[$this->primaryKey],
-			'CHECK ( '.$this->getExpression($sequenceItem).' ) ',
+			'CHECK ( '.$this->getExpression($sequenceItem,$this->column).' ) ',
 		);
 	}
 
@@ -84,7 +84,7 @@ abstract class AbstractGrouping implements IGrouping {
 		$column      = $this->column;
 		$conditions = array();
 		foreach ($this->generateSequences() as $sequenceItem) {
-			$sqlItem = '('.$this->getExpression($sequenceItem).')';
+			$sqlItem = '('.$this->getExpression($sequenceItem,'NEW.'.$this->column).')';
 			$tableNameItem = $this->getTableName($sequenceItem);
 			$sqlItem .= " THEN INSERT INTO $tableNameItem VALUES (NEW.*); ";
 			$conditions[] = $sqlItem;

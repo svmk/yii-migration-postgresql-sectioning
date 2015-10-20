@@ -18,13 +18,14 @@ class IndexReminderOfDivisonGrouping extends AbstractGrouping {
      * getExpression returns expression
      * 
      * @param string $sequenceItem sequence
+     * @param string $column       столбец
      *
      * @access protected
      *
      * @return string
      */
-	protected function getExpression($sequenceItem) {
-		return ' ('.$this->column.' % '.$this->divider.') = '.$sequenceItem.' ';
+	protected function getExpression($sequenceItem,$column) {
+		return ' ('.$column.' % '.$this->divider.') = '.$sequenceItem.' ';
 	}
 
      function __construct($primaryKey,$column,$divider) {

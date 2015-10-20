@@ -16,12 +16,13 @@ class DateTimeWeekOfYearGrouping extends AbstractGrouping {
      * getExpression returns expression
      * 
      * @param string $sequenceItem sequence
+     * @param string $column       столбец
      *
      * @access protected
      *
      * @return string
      */
-	protected function getExpression($sequenceItem) {
-		return ' EXTRACT(WOY FROM '.$this->column.') = '.$sequenceItem.' ';
+	protected function getExpression($sequenceItem,$column) {
+		return ' EXTRACT(WOY FROM '.$column.') = '.$sequenceItem.' ';
 	}
 }
