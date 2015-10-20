@@ -18,12 +18,12 @@ abstract class AbstractGrouping implements IGrouping {
      * getExpression returns expression
      * 
      * @param string $sequenceItem sequence
-     *
+     * @param string $column столбец
      * @access protected
      *
      * @return string
      */
-	abstract protected function getExpression($sequenceItem);
+	abstract protected function getExpression($sequenceItem,$column);
 
     /**
      * getTableName returns table name by sequence

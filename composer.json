@@ -8,8 +8,7 @@
             "email": "svmk-work@yandex.ru"
         }
     ],
-    "minimum-stability": "stable",
-    "version": "0.0.4",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.3"
     },
