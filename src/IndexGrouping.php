@@ -32,6 +32,8 @@ class IndexGrouping extends AbstractGrouping {
           if ($min <= 0 || $max <= 0 || $min >= $max) {
                throw new Exception("Configuration error.");               
           }
+          $this->min = $min;
+          $this->max = $max;
           parent::__construct($primaryKey,$column);
      }
 }
