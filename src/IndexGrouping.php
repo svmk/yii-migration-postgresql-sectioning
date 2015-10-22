@@ -25,7 +25,7 @@ class IndexGrouping extends AbstractGrouping {
      * @return string
      */
 	protected function getExpression($sequenceItem,$column) {
-		return ' EXTRACT('.$column.') = '.$sequenceItem.' ';
+		return $column.' = '.$sequenceItem.' ';
 	}
 
      function __construct($primaryKey,$column,$min,$max) {
